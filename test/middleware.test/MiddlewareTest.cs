@@ -10,20 +10,23 @@ namespace middleware.test
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public async Task InjectPolyciesToHeader()
         {
-            var context = new DefaultHttpContext();
-            context.Response.Body = new MemoryStream();
-            context.Response.Body.Seek(0, SeekOrigin.Begin);
-
             //Create a new instance of the middleware
             var middleware = new SecureHeaderMiddleware(
             next: (innerHttpContext) =>
             {
                 innerHttpContext.Response.WriteAsync(CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
                 return Task.CompletedTask;
-            }, null);
+            }, new TestHeaderPolicy());
 
+            var context = new DefaultHttpContext();
+            await middleware.Invoke(context);
+
+            context.Response.Body.Seek(0, SeekOrigin.Begin);
+            var header = context.Response.Headers;
+
+            Assert.AreEqual(2, header.Count);
         }
     }
 }
