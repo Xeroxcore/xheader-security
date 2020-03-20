@@ -4,15 +4,11 @@ namespace middleware.test
 {
     public class TestHeaderPolicy : IHeaderPolicy
     {
-        public IList<IPolicy> Headers { get; }
+        public IList<IPolicy> Headers { get; set; }
 
-        public TestHeaderPolicy()
+        public virtual void BuildPolicies()
         {
             Headers = new List<IPolicy>();
-        }
-
-        public void BuildPolicies()
-        {
             Headers.Add(new Policy()
             {
                 Header = "TestHeader",

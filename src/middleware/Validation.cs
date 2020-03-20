@@ -9,6 +9,5 @@ namespace middleware
 
         public static bool ListIsGreateThanValue<T>(IList<T> list, int count)
             => list.Count > count ? true : false;
-
     }
 }
