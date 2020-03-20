@@ -4,6 +4,8 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using xheaderSecurity;
+using xheaderSecurity.Interface;
 
 namespace middleware.test
 {
@@ -93,6 +95,22 @@ namespace middleware.test
         }
 
         [TestMethod]
+        public async Task PolicyHeaderListWithDublicateHeaders()
+        {
+
+            var middleware = CreateSecurityMiddleware(new DublicateTestHeaderPolicy());
+
+            var context = CreateDefaultHttpContext();
+            await middleware.Invoke(context);
+
+            context.Response.Body.Seek(0, SeekOrigin.Begin);
+            var header = context.Response.Headers;
+
+            Assert.AreEqual(2, header.Count);
+        }
+
+
+        [TestMethod]
         public async Task MakeSureMiddlewareContinuesWithoutCrash()
         {
 
@@ -105,7 +123,6 @@ namespace middleware.test
             var header = context.Response.Headers;
 
             Assert.AreEqual(0, header.Count);
-
         }
     }
 }

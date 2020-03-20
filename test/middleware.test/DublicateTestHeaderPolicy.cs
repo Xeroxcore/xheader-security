@@ -3,11 +3,9 @@ using xheaderSecurity.Interface;
 
 namespace middleware.test
 {
-    public class TestHeaderPolicy : IHeaderPolicy
+    public class DublicateTestHeaderPolicy : TestHeaderPolicy
     {
-        public IList<IPolicy> Headers { get; set; }
-
-        public virtual void BuildPolicies()
+        public override void BuildPolicies()
         {
             Headers = new List<IPolicy>();
             Headers.Add(new Policy()
@@ -15,6 +13,13 @@ namespace middleware.test
                 Header = "TestHeader",
                 Remove = false,
                 Value = "HeaderTestValue"
+            });
+
+            Headers.Add(new Policy()
+            {
+                Header = "TestHeader2",
+                Remove = false,
+                Value = "HeaderTestValue2"
             });
 
             Headers.Add(new Policy()

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace middleware
+namespace xheaderSecurity
 {
     public static class Validation
     {

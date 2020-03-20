@@ -1,3 +1,5 @@
+using xheaderSecurity.Interface;
+
 namespace middleware.test
 {
     public class Policy : IPolicy

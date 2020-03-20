@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using xheaderSecurity.Interface;
 
-namespace middleware
+namespace xheaderSecurity
 {
     public class SecureHeaderMiddleware
     {
@@ -19,7 +20,11 @@ namespace middleware
         }
 
         protected void AddToHeader(string header, string value, IHeaderDictionary headerList)
-            => headerList.Add(header, value);
+        {
+            if (!headerList.ContainsKey(header))
+                headerList.Add(header, value);
+
+        }
 
         protected void RemoveFromHeader(string header, IHeaderDictionary headerList)
             => headerList.Remove(header);

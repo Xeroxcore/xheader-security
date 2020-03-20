@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>xheader-security</PackageId>
-    <Version>1.1.4</Version>
+    <Version>1.2.6</Version>
     <Authors>Nasar Eddaoui</Authors>
     <Company>Xeroxcore</Company>
     <PackageDescription> A middle ware for Net Core applications aimed at helping developers secure their applications by injecting header policies</PackageDescription>
