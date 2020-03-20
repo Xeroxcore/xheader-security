@@ -6,9 +6,9 @@ namespace middleware
 {
     public class SecureHeaderMiddleware
     {
-        private readonly RequestDelegate Next;
-        private IHeaderPolicy Policy { get; }
-        private bool StopOnException { get; }
+        protected readonly RequestDelegate Next;
+        protected IHeaderPolicy Policy { get; }
+        protected bool StopOnException { get; }
         public SecureHeaderMiddleware(RequestDelegate next, IHeaderPolicy policy, bool stopOnException = true)
         {
             Next = next;
@@ -18,13 +18,13 @@ namespace middleware
             StopOnException = stopOnException;
         }
 
-        private void AddToHeader(string header, string value, IHeaderDictionary headerList)
+        protected void AddToHeader(string header, string value, IHeaderDictionary headerList)
             => headerList.Add(header, value);
 
-        private void RemoveFromHeader(string header, IHeaderDictionary headerList)
+        protected void RemoveFromHeader(string header, IHeaderDictionary headerList)
             => headerList.Remove(header);
 
-        private void ImplementSecurityPolicy(IHeaderDictionary headers)
+        protected void ImplementSecurityPolicy(IHeaderDictionary headers)
         {
             foreach (var policy in Policy.Headers)
             {
@@ -35,7 +35,7 @@ namespace middleware
             }
         }
 
-        private void PolicyIsValid()
+        protected void PolicyIsValid()
         {
             if (Validation.ObjectIsNull(Policy.Headers))
                 throw new Exception("Error: Assigned list of header policies in your policy is null");
@@ -43,7 +43,7 @@ namespace middleware
                 throw new Exception("Warning: Assigned list of header policies in your policy is empty");
         }
 
-        public async Task Invoke(HttpContext context)
+        public virtual async Task Invoke(HttpContext context)
         {
             try
             {
