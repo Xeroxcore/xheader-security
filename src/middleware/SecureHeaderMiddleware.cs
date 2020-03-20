@@ -22,7 +22,7 @@ namespace middleware
         public async Task Invoke(HttpContext context)
         {
             var headers = context.Response.Headers;
-            if (Policy.Headers.Count > 0)
+            if (Validation.ListIsGreateThanValue(Policy.Headers, 0))
                 Policy.BuildPolicies();
 
             foreach (var policy in Policy.Headers)

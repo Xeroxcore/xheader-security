@@ -38,7 +38,7 @@
           "dependencies": {
             "Microsoft.AspNetCore.Http": {
               "target": "Package",
-              "version": "[*, )"
+              "version": "[2.2.2, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",
