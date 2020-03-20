@@ -8,19 +8,20 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "/home/nasareddaoui/mcs/git/header-security-middleware/src/middleware/middleware.csproj",
-        "projectName": "middleware",
+        "projectName": "xheader-security",
         "projectPath": "/home/nasareddaoui/mcs/git/header-security-middleware/src/middleware/middleware.csproj",
         "packagesPath": "/home/nasareddaoui/.nuget/packages/",
         "outputPath": "/home/nasareddaoui/mcs/git/header-security-middleware/src/middleware/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "/home/nasareddaoui/mcs/git/header-security-middleware/src/middleware/nuget.config",
           "/home/nasareddaoui/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "https://nuget.pkg.github.com/OWNER/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {

@@ -23,7 +23,7 @@ nupkg/
 *.user
 *.userosscache
 *.sln.docstates
-
+nuget.config
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
