@@ -128,7 +128,7 @@ the nuget.config and validate username and ClearTextPassword
 
 #### Install package in your app
 
-To install your nuget package you will first need to setup your [nuget.config](#nuget.config). Once that is done
+To install your nuget package you will first need to setup your [nuget.config](#nugetconfig). Once that is done
 you can simply install the package with the following command.
 
 dotnet add <PROJECT> package xheader-security --version 1.2.6
