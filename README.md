@@ -6,24 +6,10 @@
 
 ## Introduction
 
-<!--ts-->
-
-## Table of Contents
-
-- [Getting started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installing](#installing)
-  - [Dotnet core 3](#dotnet-core-3)
-    - [Linux-CentOS](#linux-centos-1)
-    - [Windows 10](#windows-10-1)
-- [Deployment](#deployment)
-- [Built With](#built-with)
-- [Contributing](#contributing)
-- [Versioning](#versioning)
-- [Authors](#authors)
-- [License](#license)
-
-<!--te-->
+Zheader-security is a .Net Core middleware that helps you secure your applications by modifying
+the header of each response that is sent to the user. The middleware is built in such a way
+that you as a developer have total control of what is being modified by injecting your own policy
+into the middleware.
 
 ### Getting started
 
@@ -70,11 +56,76 @@ begin by opening a new shell window and follow the steps below:
 
 ### Deployment
 
+This section explains how the middleware can be exported as a nuget and uploaded to github for
+safe keeping. This section will also go trough how you as a developer can download the package
+to your .Net Core applications.
+
 #### Nuget.Config
+
+You will first need to create a Nuget.config file in your project to enable the github repository.
+you nuget.config should look like the following.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <!--To inherit the global NuGet package sources remove the <clear/> line below -->
+    <clear />
+        <add key="github" value="https://nuget.pkg.github.com/OWNER/index.json" />
+  </packageSources>
+      <packageSourceCredentials>
+        <github>
+            <add key="Username" value="#username" />
+            <add key="ClearTextPassword" value="password or tokenkey" />
+        </github>
+    </packageSourceCredentials>
+</configuration>
+```
+
+now that that is done you will need to change the #username to your username and
+then add your password or tokenkey you should also replace owner with you name or organization name.
 
 #### Push To Github
 
+now that you have configured the nuget.config you will be able to get and push to GitHub. Before pushing
+you will need to alter the middleware.csproj and adjust the following content.
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework> #change me if netstander is higher
+    <PackageId>xheader-security</PackageId> #name of the package
+    <Version>1.2.6</Version> #the current version accorind to versioning
+    <Authors>Nasar Eddaoui</Authors>
+    <Company>your company</Company>
+    <PackageDescription> sample description</PackageDescription>
+    <RepositoryUrl>https://github.com/Xeroxcore/xheader-security</RepositoryUrl> # the repository url that will be used to push to
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+  </ItemGroup>
+
+</Project>
+```
+
+once the csproje has been modified to your liking it's time to push your changes to GitHub with the following commands.
+
+```
+1. open the project in command line and navigate to the middleware folder.
+2. enter dotnet pack --configuration=Release
+3. dotnet push nuget "bin/Release/xheader-security.1.2.6.nupkg" --source "github"
+
+*If you recive an error check the repositoryUlr in csproj or the nuget.config and validate usernam and ClearTextPassword
+```
+
 #### Install package in your app
+
+To install your nuget package you will first need to setup your [nuget.config](#nuget.config). Once that is done
+you can simply install the package with the following command.
+
+dotnet add <PROJECT> package xheader-security --version 1.2.6
 
 ### Built With
 
