@@ -1,5 +1,4 @@
-xcore logo](https://github.com/Xeroxcore/Xeroxcore/blob/master/resources/images/Xeroxcore_Logo.png)
-<br/><br/>
+![Xeroxcore logo](https://github.com/Xeroxcore/Xeroxcore/blob/master/resources/images/Xeroxcore_Logo.png)<br/><br/>
 ![GitHub repo size](https://img.shields.io/github/repo-size/xeroxcore/xheader-security)
 ![GitHub issues](https://img.shields.io/github/issues/xeroxcore/xheader-security)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/Xeroxcore/xheader-security/blob/master/LICENSE)
