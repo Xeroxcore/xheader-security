@@ -1,4 +1,4 @@
-![Xeroxcore logo](https://github.com/Xeroxcore/Xeroxcore/blob/master/resources/images/Xeroxcore_Logo.png)
+xcore logo](https://github.com/Xeroxcore/Xeroxcore/blob/master/resources/images/Xeroxcore_Logo.png)
 <br/><br/>
 ![GitHub repo size](https://img.shields.io/github/repo-size/xeroxcore/xheader-security)
 ![GitHub issues](https://img.shields.io/github/issues/xeroxcore/xheader-security)
@@ -56,13 +56,13 @@ begin by opening a new shell window and follow the steps below:
 
 ### Deployment
 
-This section explains how the middleware can be exported as a nuget and uploaded to github for
-safe keeping. This section will also go trough how you as a developer can download the package
+This section explains how the middleware can be exported as a NuGet and uploaded to GitHub for
+safekeeping. This section will also go through how you as a developer can download the package
 to your .Net Core applications.
 
 #### Nuget.Config
 
-You will first need to create a Nuget.config file in your project to enable the github repository.
+You will first need to create a nuget.config file in your project to enable the GitHub repository.
 you nuget.config should look like the following.
 
 ```xml
@@ -83,7 +83,7 @@ you nuget.config should look like the following.
 ```
 
 now that that is done you will need to change the #username to your username and
-then add your password or tokenkey you should also replace owner with you name or organization name.
+then add your password or token key you should also replace owner with your name or organization name.
 
 #### Push To Github
 
@@ -94,13 +94,18 @@ you will need to alter the middleware.csproj and adjust the following content.
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework> #change me if netstander is higher
-    <PackageId>xheader-security</PackageId> #name of the package
-    <Version>1.2.6</Version> #the current version accorind to versioning
+    #change me if netstander is higher
+    <TargetFramework>netstandard2.0</TargetFramework> 
+    #name of the package
+    <PackageId>xheader-security</PackageId> 
+     #the current version accorind to versioning
+    <Version>1.2.6</Version>
     <Authors>Nasar Eddaoui</Authors>
     <Company>your company</Company>
     <PackageDescription> sample description</PackageDescription>
-    <RepositoryUrl>https://github.com/Xeroxcore/xheader-security</RepositoryUrl> # the repository url that will be used to push to
+     # the repository url that will be used to push to
+    <RepositoryUrl>https://github.com/Xeroxcore/xheader-security</RepositoryUrl> 
+   
   </PropertyGroup>
 
   <ItemGroup>
@@ -113,11 +118,12 @@ you will need to alter the middleware.csproj and adjust the following content.
 once the csproje has been modified to your liking it's time to push your changes to GitHub with the following commands.
 
 ```
-1. open the project in command line and navigate to the middleware folder.
+1. open the project in the command line and navigate to the middleware folder.
 2. enter dotnet pack --configuration=Release
 3. dotnet push nuget "bin/Release/xheader-security.1.2.6.nupkg" --source "github"
 
-*If you recive an error check the repositoryUlr in csproj or the nuget.config and validate usernam and ClearTextPassword
+*If you receive an error check the repositoryUrl in csproj or 
+the nuget.config and validate username and ClearTextPassword
 ```
 
 #### Install package in your app
