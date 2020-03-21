@@ -62,7 +62,6 @@ namespace xheaderSecurity
             {
                 if (StopOnException)
                     throw;
-
             }
         }
     }
